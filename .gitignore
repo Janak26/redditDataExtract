@@ -1,0 +1,8 @@
+YARS/
+notebooks/
+data/
+archive/
+collection/.env
+collection/YARS.log
+collection/__pycache__
+collection/__init__.py
