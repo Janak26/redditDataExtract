@@ -1,0 +1,116 @@
+I want you to extract AOR, BIL, Medical, Background, Eligibility, FD, ECOPR and their corresponding dates from the text.
+
+Below mentioned are several input and output examples for you. Please refer to them and respond accordingly
+
+
+Start of Examples:
+
+Input: Same timeline. AOR- Nov 17th Bg started since Jan 17th and Eligibility still not started 
+Output: {'AOR': '17 Nov', 'Background': '17 Jan'}
+
+
+Input: Aor Jan17, BIL Feb19
+Output: {'AOR': '17 Jan', 'BIL': '19 Feb'}
+
+Input:  eCopr 7:43. AOR: Sep 30 eligibility passed: December 8th background: Feb 19th COPR visible, fd available on eCOPR received from P1: March 6th P2: March 7th got P1 
+Output: {'AOR': '30 Sep', 'Eligibility': '8 Dec', 'Background': '19 Feb', 'P1': '6 Mar', 'P2': '7 Mar'}
+
+Input:  ITA 11.12 AOR 11.17 BIL 2.4 3.2 P1 (replied same day) 3.5 P2 (replied same day) 3.16 Ecopr! Montreal Office
+Output: {'AOR': '17 Nov', 'BIL': '4 Feb', 'P1': '2 Mar', 'P2': '5 Mar', 'ECOPR': '16 Mar'}
+
+Input:  ITA NOVEMBER 14 AOR NOVEMBER 18 BIL FEBRUARY 4 MEDICAL PASSED FEBRUARY 4 BIL COMPLETED FEBRUARY 10 ELIGIBILITY COMPLETED FEBRUARY 11 FINAL DECISION FEBRUARY 27 PORTAL 1 MARCH 2 BACKGROUND CHECK MARCH 3 PORTAL 2 MARCH 5 ECOPR MARCH 16
+Output: {'AOR': '18 Nov', 'BIL': '4 Feb', 'Medical': '4 Feb', 'Eligibility': '11 Feb', 'FD': '27 Feb', 'P1': '2 Mar', 'Background': '3 Mar', 'P2': '5 Mar', 'ECOPR': '16 Mar'}
+
+Input: Inland PNP ITA: Oct 27 2025 AOR: Dec 23 2025 Biometrics Request: Jan 30 2026 Biometrics given: Feb 2 2026 Medical exam passing: Feb 3 2026 Ghost update on final decision: March 2 2026 P1: March 3 2026 (replied immediately) P2: March 6 2026 (replied immediately) eCOPR: March 16 2026 
+Output: {'AOR': '23 Dec', 'BIL': '30 Jan', 'Medical': '3 Feb', 'P1': '3 Mar', 'P2': '6 Mar', 'ECOPR': '16 Mar'}
+
+Input: 546 ITA: September 03, 2025 AOR: September 04, 2025 BIL Requested: October 1, 2025 BIL Completed: October 2, 2025 PFL: February 16, 2026 Submitted PFL Response: February 22, 2026 Final Decision: February 24, 2026 P1: February 28, 2026 (replied the same day) - Montreal P2: March 3, 2026 (replied the same day) eCoPR: March 16, 2026 from Montreal, around 9:30 am EST Good luck to everyone :) 
+Output: {'AOR': '4 Sep', 'BIL': '1 Oct', 'FD': '24 Feb', 'P1': '28 Feb', 'P2': '3 Mar', 'ECOPR': '16 Mar'}
+
+Input: ITA-1 oct, AOR on 16 oct, no BIL yet - anybody with same timeline guys ? Anybody received BIL ??
+Output: {'AOR': '16 Oct'}
+
+Input: Eligibility shows completed and then background check shows in progress. Last update Nov 27: reviewing/checking the documents medical and Bil completed Nov 15. Spouse tracker shows, eligibility not started. Background check in progress.  Thank you!
+Output: {'BIL': '15 Nov', 'Mdeical': '15 Nov'}
+
+Input: Hello I got my ecopr on october 10 
+Output: {'ECOPR': '10 Oct'}
+
+Input: AOR on 5th November 
+Output: {'AOR': '5 Nov'}
+
+Input: ecopr any news? p2 17.11 fsw french inland
+Output: {'P2': '17 Nov'}
+
+Input: Got my eCOPR on November 10th. I know it says 58 days for process
+Output: {'ECOPR': '10 Nov'}
+
+Input: Am I the only one who didn’t receive BIL yet ? ITA : Sept 18 AOR : Sept 22
+Output: {'AOR': '22 Sep'}
+
+Input: Nov 4th. BIL on January 8th. Medical &amp; biometrics marked as completed Jan 17th. Everything went green on my tracker Feb 10, but nothing since. education draw in Sep 17 2025. 
+Output: {'AOR': '4 Nov', 'BIL': '8 Jan', 'Medical': '17 Jan', 'Biometrics': '17 Jan'}
+
+Input: I got P2 request before Final Decision. I submitted it on October 28th and still anything, no FD update and no eCOPR. Is
+Output: {'P2': '28 Oct'}
+
+Input: Background completed on dec 5th. No ecopr or anything yet.
+Output: {'Background': '5 Nov'}
+
+Input: ITA: 08 August 2025 (French profiency)  Upfront Medical: 04 September 2025   Application submitted: 26 September 2025   AOR: 26 September 2025  Biometrics request: 01 October 2025   Biometrics submitted: 10 October 2025 
+Output: {'AOR': '26 Sep', 'BIL': '1 Oct'}
+
+Input: I got my final decision from IRCC on November 3rd, but I still haven’t received my P1 email (portal 1). I’m starting the past 24 hours. Can anyone received their P1 share 
+Output: {'FD': '3 Nov'}
+
+Input: I got final decision “that your application is in process on Dec 16th”. Got p1 on dec 24, p2 on dec 26. Still waiting for ecopr
+Output: {'FD': '16 Dec', 'P1': '24 Dec', 'P2': '26 Dec'}
+
+Input: Background processes on October 17th. Still waiting for final decision and P1 request
+Output: {'Background': '17 Oct'}
+
+Input: What if ecopr details are removed from tracker.? I got p1 on 11th august and  on 10th September
+Output: {'P1': '11 Aug'}
+
+Input: How long does it take from p1 to p2 though, I got p1 on Sept. 23?
+Output: {'P1': '23 Sep'}
+
+Input: Sep 11 fd..no p1 yet
+Output: {'FD': '11 Sep'}
+
+Input: How did you sign up for application tracker? I got p1 on sep 12, still 
+Output: {'P1': '12 Sep'}
+
+Input: Fd and COPR visible from 38 days today. No P1 yet. Aor - Aug 8 Fd- Sep11
+Output: {'AOR': '8 Aug', 'FD': '11 Sep'}
+
+Input: No FD. Just copr number and all completed. Got that on oct 10 and p1 on oct 16
+Output: {'P1': '16 Oct'}
+
+Input: Similar timeline, but no p1 received since FD Oct 1
+Output: {'FD': '1 Oct'}
+
+
+Input: Update : tonight the p2 email.  First P1 email - august 11th Reply of IRCC for correction of information - sept. 4th P2 email - sept. 20th
+Output: {'P1': '11 Aug', 'P2': '20 Sep'}
+
+Input: I got my final decision on 12 September,2025 but still waiting for my P1 to arrive. Is there  office to delay p1 this much
+Output: {'FD': '12 Sep'}
+
+
+End of examples
+
+
+IMPORTANT FORMATTING INSTRUCTIONS:
+Date Format in results: Date Month
+For example: 4 nov (date before month)
+28 feb (date before month)
+
+In the key:value output in the json, the value should always be a date. Do not use any other text response if you do not find a date.
+
+If you do not find a field, do not include it in the result as shown in example 2, where we did not find final decision, p1, p2 and ecopr, so we did not include it in the json. 
+
+Extract the timeline events and return the results in the valid json format as mentioned
+
+
+Given below is the text from which you need to extract the information:
