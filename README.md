@@ -1,5 +1,4 @@
-![](https://raw.githubusercontent.com/Janak26/redditDataExtract/da2dbdcb967c79f7189cc646976e5d6dc9b834b1/arc.svg)
-
+![](https://raw.githubusercontent.com/Janak26/redditDataExtract/refs/heads/main/arc.jpg)
 
 # Canada Express Entry Permenant Residency Timeline tracking using Reddit Data and Python
 
